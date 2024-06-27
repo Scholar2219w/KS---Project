@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+
+  <style>
+  .mybtn{
+    position:fixed;
+  	width:60px;
+  	height:60px;
+  	top:40px;
+  	right:40px;
+
+  	color:#FFF;
+  	border-radius:50px;
+  	text-align:center;
+  	box-shadow: 2px 2px 3px #999;
+  }
+  .libtn{
+    background-color:#0014FF;
+  }
+  .lobtn{
+    background-color:red;
+  }
+    body{
+      background-color: #00FFF6;
+    }
+  </style>
+  <body>
+    <img src="images/gpay.jpeg" alt="gpay image">
+    <center><h3>Your Order</h3></center>
+    <% for(var i=0;i<(orderobj.itemname).length;i++){ %>
+        <% if((orderobj.itemqty)[i]!='0'){%>
+              <p><%= (orderobj.itemname)[i] %> : <%= (orderobj.itemqty)[i] %></p>
+            <% } %>
+    <% } %>
+    <p>please keep <%= amounttbp %> ready in cash</p>
+    <p>Delivering To: <%= orderobj.address %> </p>
+    <p>Your Contact Number: <%= orderobj.contact %> </p>
+    <p>Pay on this QR Code and send the screenshot of the payment to this number</p>
+    <p>contact: 8001172472</p>
+    <% if(user === "yes"){ %><form action="/logout?_method=DELETE" method="POST"><button class="lobtn mybtn btn btn-outline-danger" type="submit">Log Out</button></form> <% } %>
+    <% if(user==="no"){ %><form action="/login" method="POST"><button class="libtn mybtn btn btn-outline-dark" type="submit">Log In</button></form> <% } %>
+  </body>
+</html>

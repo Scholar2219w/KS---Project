@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  <style >
+  .mybtn{
+    position:fixed;
+    width:60px;
+    height:60px;
+    top:40px;
+    right:40px;
+    z-index: 6;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+  }
+  .libtn{
+    background-color:#0014FF;
+  }
+  .lobtn{
+    background-color:red;
+  }
+  .navbar{
+    background-color: #0014FF;
+    border: 2px solid black;
+    position: fixed;
+    width: 100%;
+  }
+  .navlink{
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  a:hover{
+    color: white;
+  }
+  .btn{
+    margin: 10px;
+  }
+  </style>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">🍰</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="navlink" href="/">Orders <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="navlink" href="/allreservs">Reservations<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="navlink" href="/additems">Add-Items<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="navlink" href="/removeitems">Remove-Items<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="navlink" href="/reviews">Reviews<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    </div>
+    </nav>
+    <div>
+<br>
+<br>
+<br>
+    <h3>Unprocessed Reservations</h3>
+    <ol>
+      <%  cart.forEach(function(entry){ %>
+        <%if(entry.result==="pending"){%>
+        <li>
+        <p>Email: <%=entry.email%></p>
+        <p>people: <%=entry.people%></p>
+        <p>Date: <%=entry.date%></p>
+        <p>Time: <%=entry.time%></p>
+        <form class="" action="/reservationdone" method="post">
+          <input type="hidden" name="result" value="yes">
+          <button class="btn btn-outline-success" type="submit" name="corder" value="<%=entry._id%>">Accept</button>
+        </form>
+        <form class="" action="/reservationdone" method="post">
+          <input type="hidden" name="result" value="no">
+          <button class="btn btn-outline-danger" type="submit" name="corder" value="<%=entry._id%>">Decline</button>
+        </form>
+        </li>
+        <%}%>
+        <% }) %>
+    </ol>
+    <% if(user === "yes"){ %><form action="/logout?_method=DELETE" method="POST"><button class="lobtn mybtn btn btn-outline-danger" type="submit">Log Out</button></form> <% } %>
+    <% if(user==="no"){ %><form action="/login" method="POST"><button class="libtn mybtn btn btn-outline-dark" type="submit">Log In</button></form> <% } %>
+  </div>
+  </body>
+</html>

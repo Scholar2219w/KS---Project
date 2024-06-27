@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style>
+  .mybtn{
+    position:fixed;
+    width:60px;
+    height:60px;
+    top:40px;
+    right:40px;
+
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+  }
+  .libtn{
+    background-color:#0014FF;
+  }
+  .lobtn{
+    background-color:red;
+  }
+  </style>
+  <body>
+    Please do not refresh the page.
+    Please wait while we confirm your reservation.
+    This is a manual process and might take some time.
+    Check the reservations page on your profile to check this.
+    <% if(user === "yes"){ %><form action="/logout?_method=DELETE" method="POST"><button class="lobtn mybtn btn btn-outline-danger" type="submit">Log Out</button></form> <% } %>
+    <% if(user==="no"){ %><form action="/login" method="POST"><button class="libtn mybtn btn btn-outline-dark" type="submit">Log In</button></form> <% } %>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+
+
+.part1 {
+  margin: 25px;
+}
+
+#header {
+  background-color: black;
+  color: white;
+  padding: 20px;
+}
+
+#headerfont {
+  color: white;
+  font-size: 7.5em;
+  font-family: 'Dancing Script', cursive;
+}
+
+#image1 {
+  float: right;
+  margin: 30px 4px 3px 12px;
+  border: 2px solid blue;
+  height: 400px;
+  width: 500px
+}
+#carouselExampleIndicators{
+  float: left;
+  margin: 30px 12px 3px 4px;
+  border: 2px solid blue;
+  height: 400px;
+  width: 400px
+}
+#part1text {
+  font-size: 6em;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  height: 550px;
+  line-height: 100px;
+}
+.abcd{
+  height: 400px;
+  width: 400px;
+
+}
+.carouseel {
+  padding: 20px;
+  margin: 0;
+}
+
+h1 {
+  color: green;
+}
+
+.container {
+  margin: 15px 10px 0px;
+  width: 200px;
+  height: 200px;
+  float: left;
+  shape-outside: circle();
+}
+
+
+
+.text {
+  font-size: 18px;
+  text-align: justify;
+  margin: 0px 15px;
+}
+.part1{
+  background-color: #00E7FF;
+}
+.part3{
+  background-color: #00E7FF;
+}
+.part2 {
+  background-color: #009EFF;
+}
+.part4 {
+  background-color: #009EFF;
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Explore</title>
+  </head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  <style>
+    .mybtn{
+      position:fixed;
+    	width:60px;
+    	height:60px;
+    	top:40px;
+    	right:40px;
+
+    	color:#FFF;
+    	border-radius:50px;
+    	text-align:center;
+    	box-shadow: 2px 2px 3px #999;
+    }
+    .libtn{
+      background-color:#0014FF;
+    }
+    .lobtn{
+      background-color:red;
+    }
+    .navbar{
+      background-color: #00FFF6;
+      border: 3px solid black;
+    }
+    .itemtext{
+      width:50%;
+    }
+    </style>
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#">Cardamom</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <form class="" action="/reserve" method="post">
+              <button style="margin:10px" class="btn btn-outline-dark" type="submit" name="button">Make your Reservation</button>
+            </form>
+          </li>
+          <li class="nav-item">
+            <form class="" action="/contact" method="post">
+              <button style="margin:10px;" class="btn btn-outline-dark" type="submit" name="button">Contact Us</button>
+            </form>
+          </li>
+
+          <li class="nav-item">
+            <form class="" action="/menu" method="post">
+              <button style="margin:10px;" class="btn btn-outline-dark" type="submit" name="button">Order Online!</button>
+            </form>
+          </li>
+          <li>
+            <form class="" action="/explore" method="post">
+              <button style="margin:10px;" class="btn btn-outline-dark" type="submit" name="button">Explore</button>
+            </form>
+          </li>
+          <%if(user){%>
+          <li class="nav-item">
+            <form class="" action="/showreservations" method="post">
+              <button style="margin:10px;" class="btn btn-outline-dark" type="submit" name="button">Your Reservations</button>
+            </form>
+          </li>
+          <li class="nav-item">
+            <form class="" action="/reviewpage" method="post">
+              <button style="margin:10px;" class="btn btn-outline-dark" type="submit" name="button">Review</button>
+            </form>
+          </li>
+          <%}%>
+        </ul>
+      </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+
+    <div class="itemdisp">
+      <img src = "<%=item.imgurl%>" alt="">
+      <p>Dish Name: <%= item.name %> </p>
+      <p>Price: <%= item.price %> </p>
+      <div class="itemtext">
+
+        <p> <%= item.imgdesc %> </p>
+      </div>
+    </div>
+  </center>
+  <% if(user){ %><form action="/logout?_method=DELETE" method="POST"><button class="lobtn mybtn btn btn-outline-danger" type="submit">Log Out</button></form> <% } %>
+  <% if(!user){ %><form action="/login" method="POST"><button class="libtn mybtn btn btn-outline-dark" type="submit">Log In</button></form> <% } %>
+    </body>
+  </html>
